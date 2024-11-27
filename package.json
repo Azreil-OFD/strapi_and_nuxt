@@ -1,0 +1,56 @@
+{
+  "name": "strapi_and_nuxt",
+  "private": false,
+  "type": "module",
+  "description": "Шаблон проекта на strapi + nuxt + primevue",
+  "scripts": {
+    "predev": "cp .env.strapi.dev ./backend/.env",
+    "prestart": "cp .env.strapi.prod ./backend/.env",
+    "build:frontend": "cd frontend && nuxt build",
+    "build:backend": "cd backend && npx strapi build",
+    "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
+    "start:frontend": "cd frontend && nuxt preview",
+    "start:backend": "cd backend && strapi start",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "dev:frontend": "cd frontend && nuxt dev",
+    "dev:backend": "cd backend && strapi develop",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "link-modules": "ln -s ./node_modules ./backend/node_modules",
+    "postinstall": "cd frontend && nuxt prepare",
+    "deploy": "sh ./scripts/deploy.sh",
+    "generate": "cd frontend && nuxt generate",
+    "preview": "cd frontend && nuxt preview"
+  },
+  "dependencies": {
+    "@primevue/themes": "^4.2.4",
+    "@strapi/plugin-cloud": "5.4.2",
+    "@strapi/plugin-documentation": "^5.4.2",
+    "@strapi/plugin-users-permissions": "5.4.2",
+    "@strapi/strapi": "5.4.2",
+    "better-sqlite3": "11.3.0",
+    "concurrently": "^8.2.2",
+    "nuxt": "^3.14.1592",
+    "primevue": "^4.2.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@primevue/nuxt-module": "^4.2.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "concurrently": "^8.2.2",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "72763e1a-a9e6-4f12-99aa-46425cf8d8f5"
+  }
+}
